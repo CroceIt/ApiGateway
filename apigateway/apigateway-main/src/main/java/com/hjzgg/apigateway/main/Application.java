@@ -3,7 +3,6 @@ package com.hjzgg.apigateway.main;
 import com.hjzgg.apigateway.api.ApigatewayAutoConfiguration;
 import com.hjzgg.apigateway.main.configuration.ApigatewayApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author hujunzheng

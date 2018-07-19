@@ -4,17 +4,9 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ConsumerConfig;
 import com.alibaba.dubbo.config.MonitorConfig;
 import com.hjzgg.apigateway.soa.exceptions.SoaException;
-import com.hjzgg.apigateway.soa.proxy.DynamicProxyAdapter;
 import com.hjzgg.apigateway.soa.proxy.ProxyFactoryBean;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
-import org.springframework.util.ClassUtils;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by hujunzheng on 2017/7/7.

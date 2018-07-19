@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 import springfox.documentation.builders.ApiListingBuilder;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.ApiListingBuilderPlugin;
 import springfox.documentation.spi.service.contexts.ApiListingContext;
 import springfox.documentation.swagger.web.SwaggerApiListingReader;
 

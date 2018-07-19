@@ -9,8 +9,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 import springfox.documentation.builders.OperationBuilder;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.OperationBuilderPlugin;
 import springfox.documentation.spi.service.contexts.OperationContext;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 import springfox.documentation.swagger.common.SwaggerPluginSupport;

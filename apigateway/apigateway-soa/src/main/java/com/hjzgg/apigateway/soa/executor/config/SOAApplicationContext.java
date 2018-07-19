@@ -2,12 +2,10 @@ package com.hjzgg.apigateway.soa.executor.config;
 
 import com.alibaba.dubbo.config.spring.AnnotationBean;
 import com.hjzgg.apigateway.commons.Constants;
-import com.hjzgg.apigateway.dubbo.configure.DubboConfigurationProperties;
 import com.hjzgg.apigateway.dubbo.configure.SelfDubboAnnotationBean;
 import com.hjzgg.apigateway.dubbo.configure.SpringDubboConfig;
 import com.hjzgg.apigateway.soa.executor.RegisterBeanUtils;
 import io.dubbo.springboot.DubboAutoConfiguration;
-import io.dubbo.springboot.DubboProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -30,10 +28,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static org.springframework.beans.factory.support.BeanDefinitionBuilder.genericBeanDefinition;
-import static org.springframework.boot.context.config.ConfigFileApplicationListener.APPLICATION_CONFIGURATION_PROPERTY_SOURCE_NAME;
 import static org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessorRegistrar.BINDER_BEAN_NAME;
 
 public class SOAApplicationContext extends AbstractRefreshableApplicationContext {
