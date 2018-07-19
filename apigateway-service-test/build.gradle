@@ -1,0 +1,11 @@
+subprojects {
+    apply plugin: "project-report"
+    apply from: "$rootProject.projectDir/gradle/java.gradle"
+    apply from: "$rootProject.projectDir/gradle/spring-platform.gradle"
+    apply from: "$rootProject.projectDir/gradle/hjz-sdk.gradle"
+
+    apply plugin: SimpleModulePlugin
+    dependencies {
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+}

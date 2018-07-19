@@ -1,0 +1,47 @@
+apply plugin: 'nu.studer.jooq'
+
+dependencies {
+    compile 'org.jooq:jooq'
+    jooqRuntime 'mysql:mysql-connector-java'
+}
+
+// Jooq Gradle Plugin 参考文档 https://github.com/etiennestuder/gradle-jooq-plugin
+jooq {
+    tms(sourceSets.main) {
+        jdbc {
+            driver = 'com.mysql.jdbc.Driver'
+            url = 'jdbc:mysql://xxx:3306/xxx'
+            user = 'xxx'
+            password = 'xxx'
+
+        }
+        generator {
+            name = 'org.jooq.util.DefaultGenerator'
+            database {
+                name = 'org.jooq.util.mysql.MySQLDatabase'
+                inputSchema = 'stargate_dev'
+                outputSchemaToDefault = true
+                includeExcludeColumns = true
+                //重构，相关字段迁移到tb_docker_deployment_log中
+                excludes = "tb_application\\.build_log_id | deployment_log\\.(proc_code|stack_id|proc_id) | .*\\.created_at | .*\\.drc_check_time"
+            }
+            generate {
+                relations = true
+                deprecated = false
+                records = true
+                interfaces = true
+                pojos = true
+                daos = false
+                fluentSetters = true
+            }
+            target {
+                packageName = project.groupPrefix + "." + project.groupName + ".dbmodel"
+                directory = 'src/main/java'
+            }
+        }
+    }
+}
+
+//不自动执行Jooq的代码生成和清除任务
+project.tasks.getByName('compileJava').dependsOn -= 'generateTmsJooqSchemaSource'
+project.tasks.getByName('clean').dependsOn -= 'cleanGenerateTmsJooqSchemaSource'

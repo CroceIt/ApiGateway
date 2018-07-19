@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.hjzgg.apigateway.test.service.demo.dubbo.DubboAutoConfiguration

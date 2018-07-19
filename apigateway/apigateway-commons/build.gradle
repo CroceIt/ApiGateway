@@ -1,0 +1,21 @@
+ext.aetherVersion = "1.1.0"
+ext.mavenVersion = "3.3.9"
+dependencies {
+    compile "org.apache.maven:maven-artifact:$mavenVersion"
+    compile "org.apache.maven:maven-aether-provider:$mavenVersion"
+
+    compile "org.eclipse.aether:aether-impl:$aetherVersion"
+    compile "org.eclipse.aether:aether-connector-basic:$aetherVersion"
+    compile "org.eclipse.aether:aether-transport-file:$aetherVersion"
+    compile "org.eclipse.aether:aether-transport-http:$aetherVersion"
+
+    compile "com.eclipsesource.minimal-json:minimal-json:0.9.4"
+
+    compile "org.springframework.boot:spring-boot-starter"
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+
+    compile "io.projectreactor.ipc:reactor-netty"
+    compile "io.projectreactor:reactor-core"
+
+    compile 'commons-io:commons-io'
+}

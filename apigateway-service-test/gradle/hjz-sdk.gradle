@@ -1,0 +1,11 @@
+dependencyManagement {
+    dependencies {
+    }
+}
+
+configurations.all {
+    collect { configuration ->
+        //强制去掉依赖
+//        configuration.exclude group: 'xxx', module: 'xxx'
+    }
+}

@@ -1,0 +1,17 @@
+ext.swaggerVersion = "2.8.0"
+
+dependencyManagement {
+    dependencies {
+        dependency "io.projectreactor.ipc:reactor-netty:0.6.2.RELEASE"
+        dependency "io.projectreactor:reactor-core:3.0.6.RELEASE"
+        dependency "io.springfox:springfox-swagger-ui:$swaggerVersion"
+        dependency "io.springfox:springfox-swagger2:$swaggerVersion"
+    }
+}
+
+configurations.all {
+    collect { configuration ->
+        //强制去掉依赖
+//        configuration.exclude group: 'xxx', module: 'xxx'
+    }
+}

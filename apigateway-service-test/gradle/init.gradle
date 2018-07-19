@@ -1,0 +1,57 @@
+allprojects {
+    repositories {
+        maven { url "http://maven.dev.XXXXXX.me/nexus/content/groups/public/" }
+    }
+    configurations.all {
+        //总是下载SNAPSHOT版本依赖
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+        }
+    }
+    buildscript {
+        repositories {
+            maven { url "http://maven.dev.XXXXXX.me/nexus/content/groups/public/" }
+            maven { url "https://plugins.gradle.org/m2/" }
+        }
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+            classpath "com.netflix.nebula:nebula-release-plugin:6.1.1"
+            classpath "nu.studer:gradle-jooq-plugin:2.0.9"
+        }
+        configurations.classpath.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    apply plugin: MavenPlugin
+
+    if (!project.hasProperty("nexusUser")) {
+        ext.nexusUser = "unknown"
+    }
+    if (!project.hasProperty("nexusPassword")) {
+        ext.nexusPassword = "unknown"
+    }
+    if (!project.hasProperty("nexusSnapshotRepo")) {
+        ext.nexusSnapshotRepo = "unknown"
+    }
+    if (!project.hasProperty("nexusReleaseRepo")) {
+        ext.nexusReleaseRepo = "unknown"
+    }
+
+    uploadArchives {
+        def nexus_credentials = [userName: "${nexusUser}", password: "${nexusPassword}"]
+        repositories.mavenDeployer {
+            snapshotRepository(url: "http://maven.dev.XXXXXX.me/nexus/content/repositories/${nexusSnapshotRepo}/") {
+                authentication(nexus_credentials)
+            }
+            repository(url: "http://maven.dev.XXXXXX.me/nexus/content/repositories/${nexusReleaseRepo}/") {
+                authentication(nexus_credentials)
+            }
+        }
+    }
+}
+
+rootProject {
+    task wrapper(type: Wrapper) {
+        gradleVersion = '4.4'
+        distributionType = Wrapper.DistributionType.ALL
+    }
+}

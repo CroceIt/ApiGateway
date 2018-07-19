@@ -1,0 +1,3 @@
+dependencies {
+    compile 'io.dubbo.springboot:spring-boot-starter-dubbo:1.0.0'
+}

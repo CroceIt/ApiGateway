@@ -1,0 +1,5 @@
+dependencies {
+    compile 'io.dubbo.springboot:spring-boot-starter-dubbo:1.0.0'
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile project(":apigateway-dubbo")
+}

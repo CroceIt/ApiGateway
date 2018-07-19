@@ -1,0 +1,11 @@
+//emodule {
+//}
+dependencies {
+    compile project(":apigateway-api")
+    compile project(":apigateway-commons")
+    compile 'com.github.javaparser:javaparser-symbol-solver-core:3.5.17'
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework:spring-webmvc'
+    compile "io.springfox:springfox-swagger-ui"
+    compile "io.springfox:springfox-swagger2"
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/apigateway-service-test.iml" filepath="$PROJECT_DIR$/.idea/modules/apigateway-service-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api_main.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api/apigateway-service-test-service-demo-api_test.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/buildSrc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/buildSrc_main.iml" group="buildSrc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/buildSrc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/buildSrc_test.iml" group="buildSrc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo.iml" group="service-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api/service-demo-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api/service-demo-api_main.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-api/service-demo-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-api/service-demo-api_test.iml" group="service-demo-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-commons.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-commons.iml" group="service-demo-commons" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-commons/service-demo-commons_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-commons/service-demo-commons_main.iml" group="service-demo-commons" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-commons/service-demo-commons_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-commons/service-demo-commons_test.iml" group="service-demo-commons" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-dubbo.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-dubbo.iml" group="service-demo-dubbo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-dubbo/service-demo-dubbo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-dubbo/service-demo-dubbo_main.iml" group="service-demo-dubbo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo-dubbo/service-demo-dubbo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo-dubbo/service-demo-dubbo_test.iml" group="service-demo-dubbo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo/service-demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo/service-demo_main.iml" group="service-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-demo/service-demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-demo/service-demo_test.iml" group="service-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-main.iml" group="service-main" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-main/service-main_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-main/service-main_main.iml" group="service-main" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-main/service-main_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-main/service-main_test.iml" group="service-main" />
+    </modules>
+  </component>
+</project>

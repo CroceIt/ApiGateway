@@ -1,0 +1,4 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+    com.hjzgg.apigateway.main.configuration.ApigatewayConfigurationLocator
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.hjzgg.apigateway.main.MainAutoConfiguration
