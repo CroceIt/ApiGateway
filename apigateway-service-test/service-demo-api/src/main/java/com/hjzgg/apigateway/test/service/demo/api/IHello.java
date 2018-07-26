@@ -1,7 +1,7 @@
 package com.hjzgg.apigateway.test.service.demo.api;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.hjzgg.apigateway.api.resolver.JsonContent;
+import com.hjzgg.apigateway.api.annotation.JsonContent;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

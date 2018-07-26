@@ -43,7 +43,7 @@ public class DefaultMavenRepository implements MavenRepository {
 
     public DefaultMavenRepository(RepositorySystem repositorySystem, String localDirectory, String host, int port) {
         httpClient = HttpClient.create(host, port);
-        dependencyResolver = new DependencyResolver(repositorySystem, "http://" + host + ":" + port + "/nexus/content/groups/public/", localDirectory);
+        dependencyResolver = new DependencyResolver(repositorySystem, "http://" + host + ":" + port + "/repository/maven-public/", localDirectory);
     }
 
 
@@ -75,6 +75,12 @@ public class DefaultMavenRepository implements MavenRepository {
         return dependencyResolver.resolveSingleArtifact(artifact.toCanonicalForm());
     }
 
+    @Override
+    public List<File> resolveArtifactsFiles(List<MavenArtifact> artifacts) {
+        List<String> gavs = artifacts.stream().map(MavenArtifact::toCanonicalForm).collect(Collectors.toList());
+        return dependencyResolver.resolveMultiArtifacts(gavs);
+    }
+
     private List<MavenArtifact> doLuceneSearch(Stream<Tuple2<String, String>> kvTuples, Predicate<PackagingType> typePredicate) {
         String queryString = kvTuples.filter(tuple2 -> !StringUtils.isEmpty(tuple2.getT2()))
                 .map(this::createQueryParameter).collect(joining("&"));
@@ -87,7 +93,7 @@ public class DefaultMavenRepository implements MavenRepository {
         int totalCount = json.getInt("totalCount", 0);
 
         if (totalCount <= 0) {
-            logger.debug("{} 的搜索结果为{}.", queryString, totalCount);
+            logger.info("{} 的搜索结果为{}.", queryString, totalCount);
             return Collections.emptyList();
         }
 
@@ -126,6 +132,10 @@ public class DefaultMavenRepository implements MavenRepository {
     }
 
     public static MavenRepository createDefaultRemoteInstance() {
+        return createRemoteInstance("127.0.0.1", 8082);
+    }
+
+    public static MavenRepository createRemoteInstance(String host, int port) {
         DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
         locator.addService(RepositoryConnectorFactory.class, BasicRepositoryConnectorFactory.class);
         locator.addService(TransporterFactory.class, FileTransporterFactory.class);
@@ -140,6 +150,6 @@ public class DefaultMavenRepository implements MavenRepository {
 
         RepositorySystem repositorySystem = locator.getService(RepositorySystem.class);
 
-        return new DefaultMavenRepository(repositorySystem, new File(SystemUtils.getUserHome(), ".m2/repository").toString(), "maven.dev.elenet.me", 80);
+        return new DefaultMavenRepository(repositorySystem, new File(SystemUtils.getUserHome(), ".m2/repository").toString(), host, port);
     }
 }

@@ -15,6 +15,36 @@ public class DubboConfigurationProperties {
 
     private MonitorConfig monitor;
 
+    private ApplicationConfig application;
+
+    private RegistryConfig registry;
+
+    private ProtocolConfig protocol;
+
+    public RegistryConfig getRegistry() {
+        return registry;
+    }
+
+    public void setRegistry(RegistryConfig registry) {
+        this.registry = registry;
+    }
+
+    public ProtocolConfig getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(ProtocolConfig protocol) {
+        this.protocol = protocol;
+    }
+
+    public ApplicationConfig getApplication() {
+        return application;
+    }
+
+    public void setApplication(ApplicationConfig application) {
+        this.application = application;
+    }
+
     public ConsumerConfig getConsumer() {
         return consumer;
     }

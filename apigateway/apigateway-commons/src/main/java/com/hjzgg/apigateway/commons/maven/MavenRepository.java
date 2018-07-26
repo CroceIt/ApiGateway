@@ -32,10 +32,19 @@ public interface MavenRepository {
     List<MavenArtifact> searchByGAV(GAVSearchRequest GAVSearchRequest, Predicate<PackagingType> typePredicate);
 
     /**
-     * 解析具体Artifact
+     * 解析具体Artifact，不包含依赖
      * @param artifact
      * @return
      * @throws ArtifactResolutionException
      */
     File resolveArtifactFile(MavenArtifact artifact) throws ArtifactResolutionException;
+
+
+    /**
+     * 解析具体Artifacts，不包含依赖
+     * @param artifacts
+     * @return
+     * @throws ArtifactResolutionException
+     */
+    List<File> resolveArtifactsFiles(List<MavenArtifact> artifacts);
 }

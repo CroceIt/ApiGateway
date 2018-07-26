@@ -31,7 +31,7 @@ public class ApigatewayApplicationContext extends AbstractRefreshableApplication
     }
 
     @Override
-    protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
+    protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException {
         List<Class<?>> resourceClasses = this.createApiResource();
         this.addBeanFactoryPostProcessor(new ProxyBeanDefinitionRegistryPostProcessor(this.getParent(), resourceClasses));
     }

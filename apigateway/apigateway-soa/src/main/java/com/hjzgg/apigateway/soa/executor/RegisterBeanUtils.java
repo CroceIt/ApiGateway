@@ -6,7 +6,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.registry.Registry;
 import com.alibaba.dubbo.registry.support.AbstractRegistryFactory;
 import com.hjzgg.apigateway.commons.Constants;
-import com.hjzgg.apigateway.dubbo.configure.SpringDubboConfig;
+import com.hjzgg.apigateway.dubbo.constant.DubboConstants;
 import com.hjzgg.apigateway.soa.executor.config.SOAApplicationContext;
 import com.hjzgg.apigateway.soa.proxy.ProxyFactoryBean;
 import com.hjzgg.apigateway.soa.proxy.consumer.ConsumerProxyFactoryBean;
@@ -37,14 +37,14 @@ public class RegisterBeanUtils {
         try {
             BeanDefinitionBuilder builder = fetchBasicDubboBeanDefinitionBuilder(dynamicProxyClass, resourceClass);
 
-            builder.addPropertyReference(SpringDubboConfig.DUBBO_APPLICATION_CONFIG_BEAN, SpringDubboConfig.DUBBO_APPLICATION_CONFIG_BEAN);
+            builder.addPropertyReference(DubboConstants.DUBBO_APPLICATION_CONFIG_BEAN, DubboConstants.DUBBO_APPLICATION_CONFIG_BEAN);
 
-            if (parent.containsBeanDefinition(SpringDubboConfig.DUBBO_MONITOR_CONFIG_BEAN)) {
-                builder.addPropertyReference(SpringDubboConfig.DUBBO_MONITOR_CONFIG_BEAN, SpringDubboConfig.DUBBO_MONITOR_CONFIG_BEAN);
+            if (parent.containsBeanDefinition(DubboConstants.DUBBO_MONITOR_CONFIG_BEAN)) {
+                builder.addPropertyReference(DubboConstants.DUBBO_MONITOR_CONFIG_BEAN, DubboConstants.DUBBO_MONITOR_CONFIG_BEAN);
             }
 
-            if (parent.containsBeanDefinition(SpringDubboConfig.DUBBO_CONSUMER_CONFIG_BEAN)) {
-                builder.addPropertyReference(SpringDubboConfig.DUBBO_CONSUMER_CONFIG_BEAN, SpringDubboConfig.DUBBO_CONSUMER_CONFIG_BEAN);
+            if (parent.containsBeanDefinition(DubboConstants.DUBBO_CONSUMER_CONFIG_BEAN)) {
+                builder.addPropertyReference(DubboConstants.DUBBO_CONSUMER_CONFIG_BEAN, DubboConstants.DUBBO_CONSUMER_CONFIG_BEAN);
             }
 
             AbstractBeanDefinition beanDefinition = builder.getBeanDefinition();
@@ -182,11 +182,11 @@ public class RegisterBeanUtils {
 
         if (applicationContext.containsBean(contextName)) {
             SOAApplicationContext soaApplicationContext = applicationContext.getBean(contextName, SOAApplicationContext.class);
-            if (soaApplicationContext.containsBean(SpringDubboConfig.DUBBO_PROTOCOL_CONFIG_BEAN)) {
-                soaApplicationContext.getBean(SpringDubboConfig.DUBBO_PROTOCOL_CONFIG_BEAN, ProtocolConfig.class).destory();
+            if (soaApplicationContext.containsBean(DubboConstants.DUBBO_PROTOCOL_CONFIG_BEAN)) {
+                soaApplicationContext.getBean(DubboConstants.DUBBO_PROTOCOL_CONFIG_BEAN, ProtocolConfig.class).destory();
             }
-            if (soaApplicationContext.containsBean(SpringDubboConfig.DUBBO_REGISTRY_CONFIG_BEAN)) {
-                RegistryConfig registryConfig = soaApplicationContext.getBean(SpringDubboConfig.DUBBO_REGISTRY_CONFIG_BEAN, RegistryConfig.class);
+            if (soaApplicationContext.containsBean(DubboConstants.DUBBO_REGISTRY_CONFIG_BEAN)) {
+                RegistryConfig registryConfig = soaApplicationContext.getBean(DubboConstants.DUBBO_REGISTRY_CONFIG_BEAN, RegistryConfig.class);
                 for (Registry registry : AbstractRegistryFactory.getRegistries()) {
                     if (registry.getUrl().getAddress().equals(registryConfig.getAddress())
                             && registry.getUrl().getProtocol().equals(registryConfig.getProtocol())) {

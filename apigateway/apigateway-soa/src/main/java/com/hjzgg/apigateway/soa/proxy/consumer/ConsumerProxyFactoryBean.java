@@ -13,7 +13,7 @@ import org.springframework.core.env.Environment;
  */
 public class ConsumerProxyFactoryBean extends ProxyFactoryBean implements EnvironmentAware {
 
-    ApplicationConfig requestApplicationConfig;
+    ApplicationConfig dubboApplicationConfig;
     MonitorConfig dubboMonitorConfig;
     ConsumerConfig dubboConsumerConfig;
 
@@ -42,12 +42,12 @@ public class ConsumerProxyFactoryBean extends ProxyFactoryBean implements Enviro
         return refUrl;
     }
 
-    public ApplicationConfig getRequestApplicationConfig() {
-        return requestApplicationConfig;
+    public ApplicationConfig getDubboApplicationConfig() {
+        return dubboApplicationConfig;
     }
 
-    public void setRequestApplicationConfig(ApplicationConfig requestApplicationConfig) {
-        this.requestApplicationConfig = requestApplicationConfig;
+    public void setDubboApplicationConfig(ApplicationConfig dubboApplicationConfig) {
+        this.dubboApplicationConfig = dubboApplicationConfig;
     }
 
     public MonitorConfig getDubboMonitorConfig() {

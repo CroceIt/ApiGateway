@@ -32,7 +32,7 @@ public class ConsumerDynamicProxy extends DynamicProxyAdapter {
     private Object fetchServiceProxyObject() {
         ConsumerProxyFactoryBean proxyFactoryBean = (ConsumerProxyFactoryBean) super.bean;
         ReferenceConfig rc = new ReferenceConfig();
-        rc.setApplication(proxyFactoryBean.getRequestApplicationConfig());
+        rc.setApplication(proxyFactoryBean.getDubboApplicationConfig());
         rc.setMonitor(proxyFactoryBean.getDubboMonitorConfig());
         /**
          * @see ReferenceConfig#checkDefault()

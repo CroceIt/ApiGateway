@@ -9,3 +9,17 @@ subprojects {
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
 }
+
+task dist {
+    dependsOn subprojects.build
+    doLast {
+        copy {
+            def bootJar = rootProject.subprojects.find({ p ->
+                p.plugins.hasPlugin('org.springframework.boot')
+            }).tasks.jar
+            from bootJar
+            into("target/")
+            rename(/apigateway-main.*\.jar/, "apigateway.jar")
+        }
+    }
+}

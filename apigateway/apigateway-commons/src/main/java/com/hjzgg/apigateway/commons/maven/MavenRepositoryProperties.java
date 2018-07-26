@@ -8,8 +8,8 @@ import java.io.File;
 
 @ConfigurationProperties("apigateway.maven.repo")
 public class MavenRepositoryProperties {
-    private String host = "maven.dev.elenet.me";
-    private int port = 80;
+    private String host = "127.0.0.1";
+    private int port = 8082;
     private String localDirectory = new File(SystemUtils.getUserHome(), ".m2/repository").toString();
 
     public String getHost() {

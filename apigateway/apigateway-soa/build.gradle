@@ -1,5 +1,5 @@
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework:spring-web"
     compile project(":apigateway-dubbo")
     compile project(":apigateway-commons")
 }

@@ -39,10 +39,10 @@ allprojects {
     uploadArchives {
         def nexus_credentials = [userName: "${nexusUser}", password: "${nexusPassword}"]
         repositories.mavenDeployer {
-            snapshotRepository(url: "http://192.168.100.10/nexus/content/repositories/${nexusSnapshotRepo}/") {
+            snapshotRepository(url: "http://127.0.0.1:8082/repository/${nexusSnapshotRepo}/") {
                 authentication(nexus_credentials)
             }
-            repository(url: "http://192.168.100.10/nexus/content/repositories/${nexusReleaseRepo}/") {
+            repository(url: "http://127.0.0.1:8082/repository/${nexusReleaseRepo}/") {
                 authentication(nexus_credentials)
             }
         }

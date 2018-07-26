@@ -28,6 +28,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DependencyResolver {
     private static final Logger logger = LoggerFactory.getLogger(DependencyResolver.class);
@@ -89,7 +90,7 @@ public class DependencyResolver {
             rootNode.accept(nlg);
             return nlg.getFiles();
         } catch (DependencyResolutionException e) {
-            logger.error(String.format("Failed to resolve artifact {}, scope: {}", gav, scope));
+            logger.error(String.format("Failed to resolve artifact %s, scope: %s.", gav, scope), e);
             return Collections.emptyList();
         }
     }
@@ -127,4 +128,22 @@ public class DependencyResolver {
         return resolve(gav, JavaScopes.COMPILE, classpathFilter, offline);
     }
 
+    public List<File> resolveMultiArtifacts(List<String> gavs) {
+        List<RemoteRepository> repositories = new ArrayList<>();
+        repositories.add(central);
+
+        List<ArtifactRequest> artifactRequests = gavs.stream().map(gav -> {
+            ArtifactRequest request = new ArtifactRequest();
+            request.setArtifact(new DefaultArtifact(gav));
+            request.setRepositories(repositories);
+            return request;
+        }).collect(Collectors.toList());
+        try {
+            List<ArtifactResult> results = repositorySystem.resolveArtifacts(newSession(false), artifactRequests);
+            return results.stream().map(artifactResult -> artifactResult.getArtifact().getFile()).collect(Collectors.toList());
+        } catch (ArtifactResolutionException e) {
+            logger.error("artifacts={}, resolve error!", gavs);
+            return Collections.EMPTY_LIST;
+        }
+    }
 }

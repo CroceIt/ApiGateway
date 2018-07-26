@@ -1,3 +1,15 @@
 dependencies {
-    compile 'io.dubbo.springboot:spring-boot-starter-dubbo:1.0.0'
+    compile "org.springframework.boot:spring-boot-starter"
+
+    compile "org.springframework:spring-web"
+
+    compile('com.alibaba:dubbo:2.5.3') {
+        exclude group: 'org.springframework', module: 'spring'
+    }
+
+    compile('com.101tec:zkclient:0.7') {
+        exclude group: 'slf4j-api', module: 'rg.slf4j'
+        exclude group: 'log4j', module: 'log4j'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
 }

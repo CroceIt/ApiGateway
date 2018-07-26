@@ -3,9 +3,8 @@ package com.hjzgg.apigateway.soa.executor.config;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
 import com.hjzgg.apigateway.commons.Constants;
 import com.hjzgg.apigateway.dubbo.configure.SelfDubboAnnotationBean;
-import com.hjzgg.apigateway.dubbo.configure.SpringDubboConfig;
+import com.hjzgg.apigateway.dubbo.constant.DubboConstants;
 import com.hjzgg.apigateway.soa.executor.RegisterBeanUtils;
-import io.dubbo.springboot.DubboAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -91,8 +90,7 @@ public class SOAApplicationContext extends AbstractRefreshableApplicationContext
         RegisterBeanUtils.registerBean(beanFactory, AnnotationBean.class, "dubboAnnotationBean", properties, null);
 
         //注册 dubbo 配置bean
-        RegisterBeanUtils.registerBean(beanFactory, SpringDubboConfig.class, "childSpringDubboConfig", null, null);
-        RegisterBeanUtils.registerBean(beanFactory, DubboAutoConfiguration.class, "childDubboAutoConfiguration", null, null);
+        RegisterBeanUtils.registerBean(beanFactory, DubboConstants.class, "childSpringDubboConfig", null, null);
     }
 
     public static void refreshSubApplicationContext(ApplicationContext applicationContext, List<Class<?>> resourceClasses, String appId, String group, int port) {

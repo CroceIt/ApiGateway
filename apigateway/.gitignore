@@ -18,3 +18,5 @@ gradlew.bat
 gradlew
 
 build
+
+/target/apigateway.jar

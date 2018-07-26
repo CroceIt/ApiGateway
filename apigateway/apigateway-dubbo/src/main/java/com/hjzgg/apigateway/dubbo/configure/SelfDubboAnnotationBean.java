@@ -8,21 +8,31 @@ import com.alibaba.dubbo.config.*;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.config.spring.ReferenceBean;
 import com.alibaba.dubbo.config.spring.ServiceBean;
+import com.hjzgg.apigateway.dubbo.constant.DubboConstants;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.annotation.Order;
+import org.springframework.util.ClassUtils;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @see com.alibaba.dubbo.config.spring.AnnotationBean
  */
+@Order(DubboConstants.SELF_DUBBO_ANNOTATION_BEAN_ORDER)
 public class SelfDubboAnnotationBean extends AbstractConfig implements DisposableBean, BeanPostProcessor, ApplicationContextAware, Serializable {
 
     private static final Logger logger = LoggerFactory.getLogger(Logger.class);
@@ -149,6 +159,43 @@ public class SelfDubboAnnotationBean extends AbstractConfig implements Disposabl
     }
 
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+        if(AopUtils.isAopProxy(bean)) {
+            return bean;
+        }
+        //不是代理的dubbo bean，需要修改bean对应的Service注解信息【group，version】
+        Service service = bean.getClass().getAnnotation(Service.class);
+        if (Objects.isNull(service)) {
+            return bean;
+        }
+
+        try {
+            InvocationHandler h = Proxy.getInvocationHandler(service);
+
+            // 获取 AnnotationInvocationHandler 的 memberValues 字段
+            Field memberValuesField = h.getClass().getDeclaredField("memberValues");
+            // 因为这个字段事 private final 修饰，所以要打开权限
+            memberValuesField.setAccessible(true);
+            // 获取 memberValues
+            Map memberValues = (Map) memberValuesField.get(h);
+
+            Service serviceInstance = Stream.of(bean.getClass().getInterfaces())
+                    .filter(iface -> iface.getAnnotation(Service.class) != null)
+                    .collect(Collectors.toList())
+                    .get(0)
+                    .getAnnotation(Service.class);
+
+            memberValues.put("version", serviceInstance.version());
+            memberValues.put("group", serviceInstance.group());
+        } catch (Exception e) {
+            throw new BeanCreationException(String.format("%s %s %s %s %s"
+                    , "修改"
+                    , ClassUtils.getQualifiedName(bean.getClass())
+                    , "的注解"
+                    , ClassUtils.getQualifiedName(Service.class)
+                    , "的 group值和version值出错")
+                    , e);
+        }
         return bean;
     }
 

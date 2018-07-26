@@ -1,2 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.hjzgg.apigateway.dubbo.DubboAutoConfiguration
+    com.hjzgg.apigateway.dubbo.ApigatewayDubboAutoConfiguration
+org.springframework.context.ApplicationContextInitializer=\
+    com.hjzgg.apigateway.dubbo.configure.DubboApplicationContextInitializer
+org.springframework.context.ApplicationListener=\
+    com.hjzgg.apigateway.dubbo.configure.DubboHolderListener

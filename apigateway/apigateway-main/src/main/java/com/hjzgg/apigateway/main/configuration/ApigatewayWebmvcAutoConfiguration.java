@@ -1,6 +1,5 @@
 package com.hjzgg.apigateway.main.configuration;
 
-import com.hjzgg.apigateway.api.configuration.DefaultRequestMappingHandlerMapping;
 import com.hjzgg.apigateway.main.ApigatewayDispatcherServlet;
 import com.hjzgg.apigateway.main.resolver.JsonDataBinderArgumentResolver;
 import com.hjzgg.apigateway.security.resolver.CurrentUserArgumentResolver;
@@ -17,7 +16,10 @@ import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfigu
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.DispatcherType;
-import java.util.*;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME;
 
@@ -46,13 +48,19 @@ public class ApigatewayWebmvcAutoConfiguration extends DelegatingWebMvcConfigura
     /**
      * 保证DispatcherServlet 和 RequestMappingHandlerMapping ApplicationContext一致
      * 子类上下文的RequestMappingHandlerMapping替代父类的， 定义参考
-     * @see com.hjzgg.apigateway.main.configuration.ProxyBeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry(BeanDefinitionRegistry)
      *
+     * @see com.hjzgg.apigateway.main.configuration.ProxyBeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry(BeanDefinitionRegistry)
+     * <p>
      * 这里使用默认的RequestMappingHandlerMapping，父类上下文不需要 RequestMappingHandlerMapping类型的bean
-     * */
+     */
     @Bean
     public RequestMappingHandlerMapping requestMappingHandlerMapping() {
-        return new DefaultRequestMappingHandlerMapping();
+        return new RequestMappingHandlerMapping() {
+            @Override
+            protected void initHandlerMethods() {
+                logger.info("DefaultRequestMappingHandlerMapping initHandlerMethods -> I don't want do it!");
+            }
+        };
     }
 
     @Override

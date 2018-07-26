@@ -12,24 +12,31 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(DubboConfigurationProperties.class)
 //参考 io.dubbo.springboot.DubboAutoConfiguration
 public class SpringDubboConfig {
-    //动态代理类需要注入如下3个bean
-    /**
-     * {@linkplain io.dubbo.springboot.DubboAutoConfiguration}
-     * */
-    public static final String DUBBO_APPLICATION_CONFIG_BEAN = "requestApplicationConfig";
-    public static final String DUBBO_MONITOR_CONFIG_BEAN = "dubboMonitorConfig";
-    public static final String DUBBO_CONSUMER_CONFIG_BEAN = "dubboConsumerConfig";
-
-    public static final String DUBBO_PROTOCOL_CONFIG_BEAN = "requestProtocolConfig";
-    public static final String DUBBO_REGISTRY_CONFIG_BEAN = "requestRegistryConfig";
-
     @Autowired
     private DubboConfigurationProperties dubboConfigurationProperties;
+
+    @Bean
+    @ConditionalOnPrefixProperty(prefix = "spring.dubbo.application")
+    public ApplicationConfig dubboApplicationConfig() {
+        return dubboConfigurationProperties.getApplication();
+    }
 
     @Bean
     @ConditionalOnPrefixProperty(prefix = "spring.dubbo.consumer")
     public ConsumerConfig dubboConsumerConfig() {
         return dubboConfigurationProperties.getConsumer();
+    }
+
+    @Bean
+    @ConditionalOnPrefixProperty(prefix = "spring.dubbo.protocol")
+    public ProtocolConfig dubboProtocolConfig() {
+        return dubboConfigurationProperties.getProtocol();
+    }
+
+    @Bean
+    @ConditionalOnPrefixProperty(prefix = "spring.dubbo.registry")
+    public RegistryConfig dubboRegistryConfig() {
+        return dubboConfigurationProperties.getRegistry();
     }
     
     @Bean
