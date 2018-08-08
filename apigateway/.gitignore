@@ -19,4 +19,6 @@ gradlew
 
 build
 
+buildSrc/out
+
 /target/apigateway.jar

@@ -34,7 +34,9 @@ class ModuleDefinition {
         } else if (name.endsWith("-model")) {
             scope = Scope.shared
             type = Type.biz
-        } else if (name.endsWith("-dubbo") || name.endsWith("-commons")){
+        } else if (name.endsWith("-dubbo")
+                || name.endsWith("-commons")
+                || name.endsWith("-datasource")) {
             scope = Scope.shared
             type = Type.thirds
         } else {

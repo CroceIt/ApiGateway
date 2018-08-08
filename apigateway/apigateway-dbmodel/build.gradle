@@ -1,13 +1,12 @@
-apply plugin: 'nu.studer.jooq'
-
 dependencies {
-    compile 'org.jooq:jooq'
-    jooqRuntime 'mysql:mysql-connector-java'
+    compile project(":apigateway-datasource")
 }
+
+apply plugin: 'nu.studer.jooq'
 
 // Jooq Gradle Plugin 参考文档 https://github.com/etiennestuder/gradle-jooq-plugin
 jooq {
-    tms(sourceSets.main) {
+    apigateway(sourceSets.main) {
         jdbc {
             driver = 'com.mysql.jdbc.Driver'
             url = 'jdbc:mysql://xxx:3306/xxx'
@@ -43,5 +42,5 @@ jooq {
 }
 
 //不自动执行Jooq的代码生成和清除任务
-project.tasks.getByName('compileJava').dependsOn -= 'generateTmsJooqSchemaSource'
-project.tasks.getByName('clean').dependsOn -= 'cleanGenerateTmsJooqSchemaSource'
+project.tasks.getByName('compileJava').dependsOn -= 'generateapigatewayJooqSchemaSource'
+project.tasks.getByName('clean').dependsOn -= 'cleanGenerateapigatewayJooqSchemaSource'
