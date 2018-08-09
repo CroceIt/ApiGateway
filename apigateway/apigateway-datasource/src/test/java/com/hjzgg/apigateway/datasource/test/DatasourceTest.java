@@ -23,7 +23,9 @@ public class DatasourceTest {
 
     @Test
     public void test() {
-        userService.createUser();
-        userService.addUser();
+//        userService.createUser();
+//        userService.addUser();
+
+        System.out.println(userService.getUser());
     }
 }

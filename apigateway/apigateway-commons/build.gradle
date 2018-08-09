@@ -13,6 +13,8 @@ dependencies {
 
     compile "org.springframework.boot:spring-boot-starter"
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-properties"
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml"
 
     compile "io.projectreactor.ipc:reactor-netty"
     compile "io.projectreactor:reactor-core"

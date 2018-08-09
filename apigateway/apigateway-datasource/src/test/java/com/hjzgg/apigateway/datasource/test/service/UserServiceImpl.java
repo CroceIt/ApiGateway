@@ -1,6 +1,7 @@
 package com.hjzgg.apigateway.datasource.test.service;
 
 import com.hjzgg.apigateway.datasource.test.mapper.UserMapper;
+import com.hjzgg.apigateway.datasource.test.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,5 +27,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void createUser() {
         userMapper.insert("qyxjj", "qyxjj", "18860233115");
+    }
+
+    @Override
+    public User getUser() {
+        return userMapper.getUser("1038");
     }
 }

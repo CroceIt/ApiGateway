@@ -47,7 +47,7 @@ public class JsonDataBinderArgumentResolver implements HandlerMethodArgumentReso
     private final ObjectMapper objectMapper;
 
     public JsonDataBinderArgumentResolver() {
-        objectMapper = JacksonHelper.getMapper();
+        objectMapper = JacksonHelper.getObjectMapper();
         objectMapper.registerModule(new Jdk8Module());
         objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
     }

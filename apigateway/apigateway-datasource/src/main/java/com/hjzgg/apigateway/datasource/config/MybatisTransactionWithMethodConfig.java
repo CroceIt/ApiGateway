@@ -26,13 +26,13 @@ import java.util.Properties;
  * 代理有 符合一定规则 的方法
  **/
 @Configuration
-@ConditionalOnProperty(prefix = "spring.transaction", name = "config", havingValue = "method")
+@ConditionalOnProperty(prefix = "spring.mybatis.transaction", name = "config", havingValue = "method")
 @ConditionalOnClass(PlatformTransactionManager.class)
 @AutoConfigureAfter({ JtaAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         Neo4jDataAutoConfiguration.class })
 @EnableTransactionManagement
-public class TransactionWithMethodConfig {
+public class MybatisTransactionWithMethodConfig extends MybatisTransactionCommonConfig{
 
     /**
      * 事务拦截

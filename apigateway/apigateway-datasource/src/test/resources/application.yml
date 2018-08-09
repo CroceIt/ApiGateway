@@ -1,6 +1,7 @@
 spring:
-    transaction:
-        config: method
+    mybatis:
+        transaction:
+            config: method
     datasource:
         url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=false
         username: root

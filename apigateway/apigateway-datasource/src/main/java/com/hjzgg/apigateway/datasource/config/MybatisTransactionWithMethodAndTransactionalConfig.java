@@ -30,7 +30,7 @@ import java.util.Properties;
         DataSourceTransactionManagerAutoConfiguration.class,
         Neo4jDataAutoConfiguration.class })
 @EnableTransactionManagement
-public class TransactionWithMethodAndTransactionalConfig {
+public class MybatisTransactionWithMethodAndTransactionalConfig extends MybatisTransactionCommonConfig{
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
