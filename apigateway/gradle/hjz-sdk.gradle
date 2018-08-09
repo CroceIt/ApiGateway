@@ -1,11 +1,14 @@
 ext.swaggerVersion = "2.8.0"
-
 dependencyManagement {
     dependencies {
         dependency "io.projectreactor.ipc:reactor-netty:0.6.2.RELEASE"
         dependency "io.projectreactor:reactor-core:3.0.6.RELEASE"
         dependency "io.springfox:springfox-swagger-ui:$swaggerVersion"
         dependency "io.springfox:springfox-swagger2:$swaggerVersion"
+    }
+
+    imports {
+        mavenBom 'com.fasterxml.jackson:jackson-bom:2.8.10'
     }
 }
 
