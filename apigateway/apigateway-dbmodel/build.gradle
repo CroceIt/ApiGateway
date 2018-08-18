@@ -1,8 +1,10 @@
+apply plugin: 'nu.studer.jooq'
+
 dependencies {
     compile project(":apigateway-datasource")
+    jooqRuntime 'mysql:mysql-connector-java'
 }
 
-apply plugin: 'nu.studer.jooq'
 
 // Jooq Gradle Plugin 参考文档 https://github.com/etiennestuder/gradle-jooq-plugin
 jooq {
