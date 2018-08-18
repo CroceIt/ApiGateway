@@ -61,25 +61,25 @@ public class ApigatewayNotMVCApplicationCondition extends SpringBootCondition {
             List<String> dispatchServletBeans = Arrays.asList(beanFactory
                     .getBeanNamesForType(dispatcherServletClass, false, false));
             if (dispatchServletBeans.contains(DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)) {
-                return ConditionOutcome.noMatch(message.found("springmvc dispatcher servlet bean")
+                return ConditionOutcome.match(message.found("springmvc dispatcher servlet bean")
                         .items(DEFAULT_DISPATCHER_SERVLET_BEAN_NAME));
             }
             //beanName == DEFAULT_DISPATCHER_SERVLET_BEAN_NAME， 但不是springmvc 的DispatcherServlet
             if (beanFactory.containsBean(DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)) {
                 return ConditionOutcome
-                        .match(message.found("non springmvc dispatcher servlet bean")
+                        .noMatch(message.found("non springmvc dispatcher servlet bean")
                                 .items(DEFAULT_DISPATCHER_SERVLET_BEAN_NAME));
             }
             if (dispatchServletBeans.isEmpty()) {
                 return ConditionOutcome
-                        .match(message.didNotFind("springmvc dispatcher servlet beans").atAll());
+                        .noMatch(message.didNotFind("springmvc dispatcher servlet beans").atAll());
             } else {
-                return ConditionOutcome.match(message
+                return ConditionOutcome.noMatch(message
                         .found("springmvc dispatcher servlet beans")
                         .items(ConditionMessage.Style.QUOTE, dispatchServletBeans));
             }
         }
 
-        return ConditionOutcome.match(message.didNotFind("springmvc dispatcher servlet bean").atAll());
+        return ConditionOutcome.noMatch(message.didNotFind("springmvc dispatcher servlet bean").atAll());
     }
 }
