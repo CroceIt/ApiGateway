@@ -44,5 +44,5 @@ jooq {
 }
 
 //不自动执行Jooq的代码生成和清除任务
-project.tasks.getByName('compileJava').dependsOn -= 'generateapigatewayJooqSchemaSource'
-project.tasks.getByName('clean').dependsOn -= 'cleanGenerateapigatewayJooqSchemaSource'
+project.tasks.getByName('compileJava').dependsOn -= 'generateApigatewayJooqSchemaSource'
+project.tasks.getByName('clean').dependsOn -= 'cleanGenerateApigatewayJooqSchemaSource'
