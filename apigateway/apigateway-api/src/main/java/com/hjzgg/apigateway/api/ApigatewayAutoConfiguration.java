@@ -1,6 +1,6 @@
 package com.hjzgg.apigateway.api;
 
-import com.hjzgg.apigateway.api.condition.ConditionalOnNotWebApplication;
+import com.hjzgg.apigateway.api.condition.ConditionalOnNotMVCApplication;
 import com.hjzgg.apigateway.dubbo.configure.SelfDubboAnnotationBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
-@ConditionalOnNotWebApplication
+@ConditionalOnNotMVCApplication
 @Configuration
 @ComponentScan
 public class ApigatewayAutoConfiguration {
