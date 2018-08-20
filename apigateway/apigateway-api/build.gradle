@@ -1,3 +1,9 @@
 dependencies {
     compile project(":apigateway-dubbo")
+    //通过jsonrpc的方式访问服务端
+    compile 'com.github.briandilley.jsonrpc4j:jsonrpc4j:1.5.3'
+    compile 'javax.portlet:portlet-api:2.0'
+
+    //引入内嵌tomcat
+    compile 'org.springframework.boot:spring-boot-starter-tomcat'
 }

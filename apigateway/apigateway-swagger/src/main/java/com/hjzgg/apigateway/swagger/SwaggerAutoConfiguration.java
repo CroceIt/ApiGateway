@@ -44,7 +44,7 @@ public class SwaggerAutoConfiguration {
     }
 
     @Bean
-    public WebMvcConfigurer webMvcConfigurer() throws Exception {
+    public WebMvcConfigurer webMvcConfigurer() {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {

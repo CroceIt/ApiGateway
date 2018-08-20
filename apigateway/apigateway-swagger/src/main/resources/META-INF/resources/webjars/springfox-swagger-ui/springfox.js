@@ -12,11 +12,12 @@ window.onload = () => {
             const resources = await resourcesResponse.json();
             resources.forEach(resource => {
                 resource.url = baseUrl + resource.url;
-        });
+            });
 
             window.ui = getUI(baseUrl, resources, configUI, configSecurity);
         } catch (e) {
-            alert(baseUrl);
+            console.log("baseUrl=" + baseUrl);
+            console.log(e);
             const retryURL = await prompt(
                 "Unable to infer base url. This is common when using dynamic servlet registration or when" +
                 " the API is behind an API Gateway. The base url is the root of where" +
@@ -70,15 +71,15 @@ window.onload = () => {
                 \*--------------------------------------------*/
                 oauth2RedirectUrl: baseUrl + "/webjars/springfox-swagger-ui/oauth2-redirect.html",
                 requestInterceptor: (a => a),
-            responseInterceptor: (a => a),
-        showMutatedRequest: true,
-            validatorUrl: configUI.validatorUrl,
-            /*--------------------------------------------*\
-             * Macros
-            \*--------------------------------------------*/
-            modelPropertyMacro: null,
-            parameterMacro: null,
-    });
+                responseInterceptor: (a => a),
+                showMutatedRequest: true,
+                validatorUrl: configUI.validatorUrl,
+                /*--------------------------------------------*\
+                 * Macros
+                \*--------------------------------------------*/
+                modelPropertyMacro: null,
+                parameterMacro: null,
+        });
 
         ui.initOAuth({
             /*--------------------------------------------*\

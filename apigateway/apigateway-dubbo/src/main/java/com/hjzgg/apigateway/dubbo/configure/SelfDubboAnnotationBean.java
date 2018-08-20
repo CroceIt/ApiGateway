@@ -163,7 +163,7 @@ public class SelfDubboAnnotationBean extends AbstractConfig implements Disposabl
         if(AopUtils.isAopProxy(bean)) {
             return bean;
         }
-        //不是代理的dubbo bean，需要修改bean对应的Service注解信息【group，version】
+        //不是代理的dubbo bean，需要修改bean对应的Service注解信息【group，version】, 该@Service注解不能被继承
         Service service = bean.getClass().getAnnotation(Service.class);
         if (Objects.isNull(service)) {
             return bean;
@@ -181,8 +181,8 @@ public class SelfDubboAnnotationBean extends AbstractConfig implements Disposabl
 
             Service serviceInstance = Stream.of(bean.getClass().getInterfaces())
                     .filter(iface -> iface.getAnnotation(Service.class) != null)
-                    .collect(Collectors.toList())
-                    .get(0)
+                    .findFirst()
+                    .get()
                     .getAnnotation(Service.class);
 
             memberValues.put("version", serviceInstance.version());
