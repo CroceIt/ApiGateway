@@ -36,6 +36,7 @@ class ModuleDefinition {
             type = Type.biz
         } else if (name.endsWith("-dubbo")
                 || name.endsWith("-commons")
+                || name.endsWith("-beans")
                 || name.endsWith("-datasource")) {
             scope = Scope.shared
             type = Type.thirds

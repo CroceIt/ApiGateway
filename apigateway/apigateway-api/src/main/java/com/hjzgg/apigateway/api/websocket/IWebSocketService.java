@@ -1,4 +1,4 @@
-package com.hjzgg.apigateway.websocket.service;
+package com.hjzgg.apigateway.api.websocket;
 
 import javax.websocket.*;
 

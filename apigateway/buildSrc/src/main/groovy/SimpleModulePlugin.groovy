@@ -13,7 +13,6 @@ import static ModuleDefinition.Type.*
 class SimpleModulePlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        println(project)
         if (project.gradle.rootProject == project) return
         project.extensions.create("emodule", SimpleModulePluginExtension.class, project)
         def module = new ModuleDefinition(project)

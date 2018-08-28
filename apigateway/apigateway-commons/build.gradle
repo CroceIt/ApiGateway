@@ -1,5 +1,10 @@
 ext.aetherVersion = "1.1.0"
 ext.mavenVersion = "3.3.9"
+
+emodule {
+    dependency "apigateway-beans"
+}
+
 dependencies {
     compile "org.apache.maven:maven-artifact:$mavenVersion"
     compile "org.apache.maven:maven-aether-provider:$mavenVersion"

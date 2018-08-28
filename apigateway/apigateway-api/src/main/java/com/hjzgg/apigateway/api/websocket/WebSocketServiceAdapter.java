@@ -1,6 +1,4 @@
-package com.hjzgg.apigateway.websocket.adapter;
-
-import com.hjzgg.apigateway.websocket.service.IWebSocketService;
+package com.hjzgg.apigateway.api.websocket;
 
 import javax.websocket.Session;
 

@@ -43,7 +43,7 @@ public class ApigatewayNotMVCApplicationCondition extends SpringBootCondition {
         }
         ConditionOutcome outcome = isMVCApplication(context, metadata);
         if (outcome.isMatch()) {
-            logger.warn("检测到项目包含SpringMVC，引入apigateway dubbo配置失败！！！" + outcome.getMessage());
+            throw new RuntimeException("检测到项目包含SpringMVC，引入apigateway dubbo配置失败！！！" + outcome.getMessage());
         }
         return ConditionOutcome.inverse(outcome);
     }

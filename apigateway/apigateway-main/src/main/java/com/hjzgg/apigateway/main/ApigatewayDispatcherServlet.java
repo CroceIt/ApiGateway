@@ -1,6 +1,6 @@
 package com.hjzgg.apigateway.main;
 
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;

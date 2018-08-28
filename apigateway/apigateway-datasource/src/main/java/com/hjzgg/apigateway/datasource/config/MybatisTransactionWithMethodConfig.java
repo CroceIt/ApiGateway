@@ -1,7 +1,6 @@
 package com.hjzgg.apigateway.datasource.config;
 
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -44,6 +43,8 @@ public class MybatisTransactionWithMethodConfig extends MybatisTransactionCommon
         BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
         creator.setBeanNames("*SVImpl","*ServiceImpl");
         creator.setInterceptorNames(new String[] {"txInterceptor"});
+        creator.setExposeProxy(true);
+        creator.setProxyTargetClass(true);
         return creator;
     }
 

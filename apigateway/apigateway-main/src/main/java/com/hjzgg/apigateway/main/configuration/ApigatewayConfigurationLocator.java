@@ -1,6 +1,6 @@
 package com.hjzgg.apigateway.main.configuration;
 
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
 import com.hjzgg.apigateway.commons.maven.DefaultMavenRepository;
 import com.hjzgg.apigateway.commons.maven.MavenArtifact;
 import com.hjzgg.apigateway.commons.maven.MavenRepository;

@@ -1,4 +1,4 @@
-package com.hjzgg.apigateway.commons;
+package com.hjzgg.apigateway.beans.constants;
 
 /**
  * @author hujunzheng
@@ -15,4 +15,6 @@ public class Constants {
     public static final String API_CLASS_INFO = "api_class_info";
 
     public static final String DUBBO_PROVIDER_PORT = "dubbo_provider_port";
+
+    public static final int LOWEST_PRECEDENCE_ORDER = Integer.MAX_VALUE - 5;
 }

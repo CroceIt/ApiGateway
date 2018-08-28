@@ -6,6 +6,10 @@ logging:
     config: ./config/logback.xml
 
 spring:
+    aop:
+        auto: false
+    websocket:
+        auto: true
     jooq:
         #请勿动，当使用了ejdbc的配置后，Spring Boot无法识别正确的Dialect
         sqlDialect: Mysql

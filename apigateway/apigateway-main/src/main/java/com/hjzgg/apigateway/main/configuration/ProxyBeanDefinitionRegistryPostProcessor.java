@@ -1,7 +1,7 @@
 package com.hjzgg.apigateway.main.configuration;
 
-import com.hjzgg.apigateway.soa.proxy.consumer.ConsumerDynamicProxy;
 import com.hjzgg.apigateway.soa.executor.RegisterBeanUtils;
+import com.hjzgg.apigateway.soa.proxy.consumer.ConsumerDynamicProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -49,9 +49,9 @@ public class ProxyBeanDefinitionRegistryPostProcessor implements BeanDefinitionR
          * @see com.hjzgg.apigateway.main.configuration.ApigatewayApplicationContext
          * 所以导致RequestMappingHandlerMapping无法获取父类上下文的controller，需要设置字段detectHandlerMethodsInAncestorContexts为true
          */
-        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(RequestMappingHandlerMapping.class);
-        builder.addPropertyValue("detectHandlerMethodsInAncestorContexts", true);
-        registry.registerBeanDefinition("requestMappingHandlerMapping", builder.getBeanDefinition());
+        BeanDefinitionBuilder requestMappingBuilder = BeanDefinitionBuilder.genericBeanDefinition(RequestMappingHandlerMapping.class);
+        requestMappingBuilder.addPropertyValue("detectHandlerMethodsInAncestorContexts", true);
+        registry.registerBeanDefinition("requestMappingHandlerMapping", requestMappingBuilder.getBeanDefinition());
 
         if (!CollectionUtils.isEmpty(resourceClasses)) {
             this.resourceClasses = resourceClasses.stream()
@@ -69,7 +69,7 @@ public class ProxyBeanDefinitionRegistryPostProcessor implements BeanDefinitionR
                 .stream()
                 .forEach(entrySet -> {
                     List<Class<?>> childResourceClasses = entrySet.getValue();
-                    log.debug("registerConsumer package resource " + entrySet.getKey());
+                    log.debug("注册消费者 package resource " + entrySet.getKey());
                     childResourceClasses.forEach(childResourceClass -> {
                         log.debug("     >>>>" + childResourceClass.getName());
                     });

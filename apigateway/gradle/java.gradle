@@ -8,7 +8,9 @@ sourceSets {
         output.resourcesDir = output.classesDirs.singleFile
     }
 }
+
 apply plugin: 'idea'
+
 idea {
     module {
         outputDir sourceSets.main.output.singleFile

@@ -1,7 +1,7 @@
 package com.hjzgg.apigateway.swagger.provider;
 
 import com.google.common.base.Function;
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
 import com.hjzgg.apigateway.commons.utils.ContextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

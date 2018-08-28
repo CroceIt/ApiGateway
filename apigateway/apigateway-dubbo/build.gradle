@@ -1,3 +1,7 @@
+emodule {
+    dependency "apigateway-beans"
+}
+
 dependencies {
     compile "org.springframework.boot:spring-boot-starter"
 

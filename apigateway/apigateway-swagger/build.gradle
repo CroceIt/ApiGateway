@@ -1,7 +1,9 @@
 //emodule {
 //}
 dependencies {
-    compile project(":apigateway-api")
+    compile (project(":apigateway-api")) {
+        transitive = false
+    }
     compile project(":apigateway-commons")
     compile 'com.github.javaparser:javaparser-symbol-solver-core:3.5.17'
     compile 'org.springframework.boot:spring-boot-starter'

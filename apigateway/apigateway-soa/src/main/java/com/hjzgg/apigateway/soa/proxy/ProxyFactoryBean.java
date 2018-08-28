@@ -45,7 +45,7 @@ public abstract class ProxyFactoryBean implements FactoryBean {
                     , ClassUtils.getQualifiedName(ConsumerProxyFactoryBean.class)
                     , ClassUtils.getQualifiedName(Class.class)
                     , " 的、公共的、非抽象的、返回值非void的方法"
-                    , "请将你的动态代理类继承"
+                    , ", 请将你的动态代理类继承"
                     , ClassUtils.getQualifiedName(DynamicProxyAdapter.class)
             ), e);
         }

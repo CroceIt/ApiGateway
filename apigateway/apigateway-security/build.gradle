@@ -1,4 +1,6 @@
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
-    compile project(":apigateway-api")
+    compile (project(":apigateway-api")) {
+        transitive = false
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -14,8 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@TestPropertySource(properties = "spring.config.location=classpath:datasources.yml")
 @SpringBootApplication
 public class DatasourceTest {
+
+//    public DatasourceTest() {
+//        System.setProperty("spring.config.location", "classpath:datasources.yml");
+//    }
 
     @Autowired
     private IUserService userService;

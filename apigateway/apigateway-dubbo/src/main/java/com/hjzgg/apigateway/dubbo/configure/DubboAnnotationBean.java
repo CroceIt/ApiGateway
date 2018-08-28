@@ -1,7 +1,7 @@
 package com.hjzgg.apigateway.dubbo.configure;
 
 import com.alibaba.dubbo.config.spring.AnnotationBean;
-import com.hjzgg.apigateway.dubbo.constant.DubboConstants;
+import com.hjzgg.apigateway.beans.constants.DubboConstants;
 import org.springframework.core.annotation.Order;
 
 /**

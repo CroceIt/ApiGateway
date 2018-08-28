@@ -1,18 +1,12 @@
 package com.hjzgg.apigateway.websocket;
 
-import org.springframework.context.annotation.Bean;
+import com.hjzgg.apigateway.beans.constants.WebSocketConstants;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
+@ConditionalOnProperty(name = WebSocketConstants.WEB_SOCKET_AUTO_PROPERTY_KEY, havingValue = "true")
 @Configuration
-@EnableWebSocket
 @ComponentScan
 public class ApigatewayWebSocketAutoConfiguration {
-
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
 }

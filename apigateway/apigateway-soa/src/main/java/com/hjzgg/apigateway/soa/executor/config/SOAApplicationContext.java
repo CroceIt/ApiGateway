@@ -1,9 +1,9 @@
 package com.hjzgg.apigateway.soa.executor.config;
 
-import com.alibaba.dubbo.config.spring.AnnotationBean;
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
+import com.hjzgg.apigateway.dubbo.configure.DubboAnnotationBean;
 import com.hjzgg.apigateway.dubbo.configure.SelfDubboAnnotationBean;
-import com.hjzgg.apigateway.dubbo.constant.DubboConstants;
+import com.hjzgg.apigateway.dubbo.configure.SpringDubboConfig;
 import com.hjzgg.apigateway.soa.executor.RegisterBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,11 +64,11 @@ public class SOAApplicationContext extends AbstractRefreshableApplicationContext
         //支持 ConfigurationProperties
         BeanDefinitionBuilder meta =
                 genericBeanDefinition(ConfigurationBeanFactoryMetaData.class);
-        BeanDefinitionBuilder bean = genericBeanDefinition(
+        BeanDefinitionBuilder cpbppBean = genericBeanDefinition(
                 ConfigurationPropertiesBindingPostProcessor.class);
-        bean.addPropertyReference("beanMetaDataStore", METADATA_BEAN_NAME);
+        cpbppBean.addPropertyReference("beanMetaDataStore", METADATA_BEAN_NAME);
         BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
-        registry.registerBeanDefinition(BINDER_BEAN_NAME, bean.getBeanDefinition());
+        registry.registerBeanDefinition(BINDER_BEAN_NAME, cpbppBean.getBeanDefinition());
         registry.registerBeanDefinition(METADATA_BEAN_NAME, meta.getBeanDefinition());
         /**
          * Register all relevant annotation post processors in the given registry.
@@ -87,10 +87,10 @@ public class SOAApplicationContext extends AbstractRefreshableApplicationContext
         log.info("注入自定义的AnnotationBean， 增加com.alibaba.dubbo.config.spring.AnnotationBean功能");
         RegisterBeanUtils.registerBean(beanFactory, SelfDubboAnnotationBean.class, "selfDubboAnnotationBean", properties, null);
         log.info("注入AnnotationBean，处理dubbo注解");
-        RegisterBeanUtils.registerBean(beanFactory, AnnotationBean.class, "dubboAnnotationBean", properties, null);
+        RegisterBeanUtils.registerBean(beanFactory, DubboAnnotationBean.class, "dubboAnnotationBean", properties, null);
 
         //注册 dubbo 配置bean
-        RegisterBeanUtils.registerBean(beanFactory, DubboConstants.class, "childSpringDubboConfig", null, null);
+        RegisterBeanUtils.registerBean(beanFactory, SpringDubboConfig.class, "childSpringDubboConfig", null, null);
     }
 
     public static void refreshSubApplicationContext(ApplicationContext applicationContext, List<Class<?>> resourceClasses, String appId, String group, int port) {

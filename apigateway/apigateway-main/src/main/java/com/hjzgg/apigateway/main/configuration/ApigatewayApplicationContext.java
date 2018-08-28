@@ -1,6 +1,6 @@
 package com.hjzgg.apigateway.main.configuration;
 
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
 import com.hjzgg.apigateway.commons.utils.ApigatewayClassUtils;
 import com.hjzgg.apigateway.soa.executor.ApiJarResourceLoader;
 import org.slf4j.Logger;
@@ -33,6 +33,7 @@ public class ApigatewayApplicationContext extends AbstractRefreshableApplication
     @Override
     protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException {
         List<Class<?>> resourceClasses = this.createApiResource();
+        //添加上下文BeanFactoryPostProcessor，实现路由功能，dubbo服务路径映射到springmvc requestMapping
         this.addBeanFactoryPostProcessor(new ProxyBeanDefinitionRegistryPostProcessor(this.getParent(), resourceClasses));
     }
 

@@ -1,6 +1,6 @@
 package com.hjzgg.apigateway.main.configuration;
 
-import com.hjzgg.apigateway.commons.Constants;
+import com.hjzgg.apigateway.beans.constants.Constants;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
